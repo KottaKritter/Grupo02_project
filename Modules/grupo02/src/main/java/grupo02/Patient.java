@@ -18,4 +18,15 @@ public class Patient extends Person{
         this.height = height;
         this.blood = blood;
     }
+
+    @Override
+    public String toString() {
+        return "Patient{" + super.toString()+
+                "id=" + id +
+                ", age=" + age +
+                ", weight=" + weight +
+                ", height=" + height +
+                ", blood='" + blood + '\'' +
+                '}';
+    }
 }

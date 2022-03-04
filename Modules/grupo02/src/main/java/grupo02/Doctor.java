@@ -9,18 +9,15 @@ import java.util.List;
 public class Doctor extends Person{
     private String specialty;
 
-    public Doctor(String name, String lastName, int phone, String email, String specialty){
+    public Doctor(String name, String lastName, long phone, String email, String specialty){
         super(name, lastName, phone, email);
         this.specialty = specialty;
     }
 
-    ArrayList<Doctor> availableDoctors = new ArrayList();
-
-    public void addAvailableDoctors(Doctor doctor){
-        availableDoctors.add(doctor);
-    }
-
-    public ArrayList<Doctor> getAllDoctor(){
-        return availableDoctors;
+    @Override
+    public String toString() {
+        return "Doctor{" + super.toString() +
+                "specialty='" + specialty + '\'' +
+                '}';
     }
 }
