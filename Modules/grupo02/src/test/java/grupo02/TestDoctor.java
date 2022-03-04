@@ -17,24 +17,24 @@ public class TestDoctor {
         planilla1.addAvailableDoctors(doctor3);
         //System.out.print(planilla1.getAllDoctor().toString());
         //SpreadSheet doctor = planilla1.getADoctor();
-        //echa = Calendar.getInstance().getTime()
-        //System.out.println(fecha);
+
 
         Patient paciente1 = new Patient("Ricardo", "mendez", 316456372, "andres@mail.com", 12345, 34, 72, 1.70, "A+" );
 
-
-        long rangebegin = Timestamp.valueOf("2013-02-08 00:00:00").getTime();
-        long rangeend = Timestamp.valueOf("2013-02-08 00:58:00").getTime();
-        long diff = rangeend - rangebegin + 1;
-        Timestamp rand = new Timestamp(rangebegin + (long)(Math.random() * diff));
-        //System.out.println("rand = " + rand);
-
         Appointment cita1 = new Appointment(paciente1,planilla1.getADoctor());
-        cita1.bookAnAppointment(rand);
+        cita1.bookAnAppointment();
         Appointment cita2 = new Appointment(paciente1, planilla1.getADoctor());
+        cita2.bookAnAppointment();
+        cita1.addAppointment();
+        cita2.addAppointment();
 
-        System.out.println("cita = " + cita1.getAnAppointment());
-        System.out.println("cita2  = " + cita2.getAnAppointment() );
+        System.out.println("cita = " + cita1.getYourAppointment());
+        System.out.println("cita2  = " + cita2.getYourAppointment() );
+
+        FileManagement file1 = new FileManagement();
+        //file1.doctorsSaved("C:\\Users\\Andres F\\Proyecto-Kodigo\\Grupo02_project\\Modules\\grupo02\\src\\main\\java\\grupo02\\Files\\doctors.txt",planilla1.getAllDoctor().toString());
+        //file1.appointmentsSaved("C:\\Users\\Andres F\\Proyecto-Kodigo\\Grupo02_project\\Modules\\grupo02\\src\\main\\java\\grupo02\\Files\\appointments.txt",Appointment.getAllAppointments().toString());
+        //file1.
 
         
 

@@ -1,0 +1,1 @@
+[Doctor{Person(name=Andres, lastName=Rodriguez, phone=3165432345, email=andresr42@gmail.com)specialty='pediatria'}, Doctor{Person(name=Felipe, lastName=Hernandez, phone=3165432345, email=andresr42@gmail.com)specialty='pediatria'}, Doctor{Person(name=Mario, lastName=Conrrado, phone=3165432345, email=andresr42@gmail.com)specialty='pediatria'}]
