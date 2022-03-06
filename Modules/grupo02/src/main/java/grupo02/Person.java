@@ -2,8 +2,10 @@ package grupo02;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 @Data
-public class Person {
+public class Person implements Serializable {
     private String name;
     private String lastName;
     private long phone;
@@ -18,5 +20,11 @@ public class Person {
         this.lastName = lastName;
         this.phone = phone;
         this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return "name: " + name + " lastName=: " + lastName + ", phone: " + phone +
+                " email: "  + email + "." + "\n";
     }
 }

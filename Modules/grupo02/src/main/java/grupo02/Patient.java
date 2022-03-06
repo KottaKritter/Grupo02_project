@@ -21,12 +21,11 @@ public class Patient extends Person{
 
     @Override
     public String toString() {
-        return "Patient{" + super.toString()+
-                "id=" + id +
-                ", age=" + age +
-                ", weight=" + weight +
-                ", height=" + height +
-                ", blood='" + blood + '\'' +
-                '}';
+        return "Patient: " + "\n" + super.toString()+
+                "id: " + id +
+                ", age: " + age +
+                ", weight: " + weight +
+                ", height: " + height +
+                ", blood: " + blood + '.' + "\n";
     }
 }

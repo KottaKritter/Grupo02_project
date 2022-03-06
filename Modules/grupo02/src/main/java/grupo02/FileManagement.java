@@ -3,53 +3,97 @@ package grupo02;
 import lombok.Data;
 
 import java.io.*;
+import java.util.ArrayList;
 
 @Data
-public class FileManagement {
+public class FileManagement implements Serializable {
     private SpreadSheet spreadSheet;
     private Appointment appointment;
-    private Diagnosis diagnosis;
     private File doctorsFile;
-    private File appointmenstFile;
     private File diagnosisFile;
 
     public FileManagement(){
 
     }
 
-    public void doctorsSaved(String fileName, String content){
-        File doctorFile = new File(fileName);
-        try{
-            PrintWriter out = new PrintWriter(doctorFile);
-            out.println(content);
-            out.close();
-        }catch (FileNotFoundException e){
+    public static void doctorSaved(String fileName, ArrayList<Doctor> doctor){
+        FileOutputStream fichero = null;
+
+        try {
+            fichero = new FileOutputStream(fileName);
+            ObjectOutputStream tuberia = new ObjectOutputStream(fichero);
+            tuberia.writeObject(doctor);
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }finally {
+            try {
+                fichero.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+    public static void appointmentForSave(String fileName, ArrayList<Appointment> appointments){
+        FileOutputStream fichero = null;
+
+        try {
+            fichero = new FileOutputStream(fileName);
+            ObjectOutputStream tuberia = new ObjectOutputStream(fichero);
+            tuberia.writeObject(appointments);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }finally {
+            try {
+                fichero.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
     }
 
-    public void appointmentsSaved(String fileName, String content){
-        File appointmentsFile = new File(fileName);
-        try{
-            PrintWriter out = new PrintWriter(appointmentsFile);
-            out.println(content);
-            out.close();
-        }catch (FileNotFoundException e){
+
+    public static ArrayList<Doctor> readDoctors(String fileName) {
+        ArrayList<Doctor> doctors = null;
+        try {
+            ObjectInputStream leerFichero = new ObjectInputStream(new FileInputStream(fileName));
+            doctors = (ArrayList<Doctor>) leerFichero.readObject();
+            leerFichero.close();
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+        return doctors;
     }
 
-    public void diagnosisSaved(String fileName, String content){
-        File diagnosisFile = new File(fileName);
-        try{
-            PrintWriter out = new PrintWriter(diagnosisFile);
-            out.println(content);
-            out.close();
-        }catch (FileNotFoundException e){
+    public static ArrayList<Appointment> readAppointments(String fileName){
+        ArrayList<Appointment> appointments = null;
+        try {
+            ObjectInputStream leerCitas = new ObjectInputStream(new FileInputStream(fileName));
+            appointments = (ArrayList<Appointment>) leerCitas.readObject();
+            leerCitas.close();
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+        return appointments;
     }
+
+
+
 
 
 }

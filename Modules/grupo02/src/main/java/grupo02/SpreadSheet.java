@@ -2,12 +2,15 @@ package grupo02;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
 @Data
-public class SpreadSheet {
+public class SpreadSheet implements Serializable {
+
     ArrayList<Doctor> availableDoctors = new ArrayList();
+
 
     public void addAvailableDoctors(Doctor doctor){
         availableDoctors.add(doctor);
@@ -25,9 +28,8 @@ public class SpreadSheet {
 
     @Override
     public String toString() {
-        return "SpreadSheet{" +
-                "availableDoctors=" + availableDoctors +
-                '}';
+        return availableDoctors.toString();
+
     }
 }
 

@@ -2,11 +2,10 @@ package grupo02;
 
 import lombok.Data;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.Serializable;
 
 @Data
-public class Doctor extends Person{
+public class Doctor extends Person implements Serializable {
     private String specialty;
 
     public Doctor(String name, String lastName, long phone, String email, String specialty){
@@ -16,8 +15,7 @@ public class Doctor extends Person{
 
     @Override
     public String toString() {
-        return "Doctor{" + super.toString() +
-                "specialty='" + specialty + '\'' +
-                '}';
+        return "Doctor: "  + super.toString() +
+                "specialty: " + specialty + '.' + "\n";
     }
 }
