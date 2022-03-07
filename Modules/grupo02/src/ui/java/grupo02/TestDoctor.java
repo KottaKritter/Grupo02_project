@@ -30,27 +30,26 @@ public class TestDoctor {
         HandleAppointments handleAppointments = new HandleAppointments();
 
         //agendar una cita
-        handleAppointments.bookAnAppointment(appointment1);
+        System.out.println(handleAppointments.bookAnAppointment(appointment1));
 
         //añadir cita a la lista
         handleAppointments.addAppointment(appointment1);
 
-        //System.out.println(handleAppointments.bookAnAppointment(appointment1));
-        //System.out.println(handleAppointments.bookAnAppointment(appointment2));
+
 
         //Guardar cita en el archivo de texto
-        appointmentForSave("C:\\Users\\Andres F\\Proyecto-Kodigo\\Grupo02_project\\Modules\\grupo02\\src\\main\\java\\grupo02\\Files\\appointments.txt",handleAppointments.getAllAppointments());
+        //appointmentForSave("C:\\Users\\Andres F\\Proyecto-Kodigo\\Grupo02_project\\Modules\\grupo02\\src\\main\\java\\grupo02\\Files\\appointments.txt",handleAppointments.getAllAppointments());
 
         //leer todas las citas guardadas
-        //System.out.println(readAppointments("C:\\Users\\Andres F\\Proyecto-Kodigo\\Grupo02_project\\Modules\\grupo02\\src\\main\\java\\grupo02\\Files\\appointments.txt"));
+        System.out.println(readAppointments("C:\\Users\\Andres F\\Proyecto-Kodigo\\Grupo02_project\\Modules\\grupo02\\src\\main\\java\\grupo02\\Files\\appointments.txt"));
 
 
         //Guardar doctores al archivo de texto
-        doctorSaved("C:\\Users\\Andres F\\Proyecto-Kodigo\\Grupo02_project\\Modules\\grupo02\\src\\main\\java\\grupo02\\Files\\doctors.txt",planilla1.getAllDoctor());
+        //doctorSaved("C:\\Users\\Andres F\\Proyecto-Kodigo\\Grupo02_project\\Modules\\grupo02\\src\\main\\java\\grupo02\\Files\\doctors.txt",planilla1.getAllDoctor());
         //System.out.println(handleAppointments.getAllAppointments());
 
         //leer los doctores en el archivo de texto
-        System.out.println(readDoctors("C:\\Users\\Andres F\\Proyecto-Kodigo\\Grupo02_project\\Modules\\grupo02\\src\\main\\java\\grupo02\\Files\\doctors.txt"));
+        //System.out.println(readDoctors("C:\\Users\\Andres F\\Proyecto-Kodigo\\Grupo02_project\\Modules\\grupo02\\src\\main\\java\\grupo02\\Files\\doctors.txt"));
 
 
 
