@@ -2,7 +2,10 @@ package grupo02;
 
 import java.util.Scanner;
 
+import static grupo02.UIDoctor.showDoctorMenu;
+
 public class UIMenu {
+
 
     public static void showMenu(){
         System.out.println("Welcome to My Appointments");
@@ -21,13 +24,14 @@ public class UIMenu {
                 case 1:
                     System.out.println("Patient");
                     System.out.println("Accessing patients");
-                    UIPatient.showPatientMenu();
+                    UIPatient.registerPatient();
                     response = 0;
 
                     break;
                 case 2:
-                    response = 0;
-
+                    System.out.println("Doctor");
+                    System.out.println("Accessing the database of doctors");
+                    showDoctorMenu();
                     break;
                 case 0:
                     System.out.println("Thank you for you visit");
@@ -37,6 +41,10 @@ public class UIMenu {
             }
         }while (response != 0);
     }
+
+
+
+
 
 
 }

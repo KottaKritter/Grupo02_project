@@ -57,7 +57,6 @@ public class FileManagement implements Serializable {
 
     }
 
-
     public static ArrayList<Doctor> readDoctors(String fileName) {
         ArrayList<Doctor> doctors = null;
         try {
