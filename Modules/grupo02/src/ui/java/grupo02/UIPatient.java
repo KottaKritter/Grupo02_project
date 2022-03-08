@@ -2,7 +2,6 @@ package grupo02;
 
 import java.util.Scanner;
 
-import static grupo02.FileManagement.*;
 import static grupo02.HandleAppointments.*;
 import static grupo02.SpreadSheet.*;
 import static grupo02.UIMenu.*;
@@ -10,10 +9,9 @@ import static grupo02.UIMenu.*;
 public class UIPatient {
 
     public static void showPatientMenu(Patient patient) {
-
+        HandleAppointments handleAppointments = new HandleAppointments();
         int response = 0;
         do {
-            System.out.println("\n\n");
             System.out.println("Welcome " + patient.getName());
             System.out.println("What do you want to do?: ");
             System.out.println("Write one option: ");
@@ -29,21 +27,10 @@ public class UIPatient {
                     System.out.println("::Booking an appointment::");
                     getDoctorsAvailable();
                     Appointment appointment = new Appointment(patient, getADoctor());
-                    System.out.println(bookAnAppointment(appointment));
                     addAppointment(appointment);
-                    appointmentForSave("C:\\Users\\Andres F\\Proyecto-Kodigo\\Grupo02_project\\Modules\\grupo02\\src\\main\\java\\grupo02\\Files\\appointments.txt",saveAppointments());
-                    System.out.println("Do you want us to send you the appointment by mail? ");
-                    System.out.println("press 'y' for yes and 'n' for no");
-                    String question = sc.nextLine();
-                    if(question.contains("y")){
-                        System.out.println("te envie la cita a tu correo");
-                    }
-                    else if(question.contains("n")){
-                        System.out.println("ok entonces no quieres que te lo enviemos");
-                    }
-                    else{
-                        System.out.println("You did not enter the correct value");
-                    }
+                    System.out.println(bookAnAppointment(appointment));
+                    handleAppointments.saveFile();
+                    System.out.println("I return you to the previous page...");
                     showPatientMenu(patient);
                     break;
                 case 2:
@@ -55,7 +42,7 @@ public class UIPatient {
                         break;
                     }
                     System.out.println("This is your scheduled appointment: ");
-                    readAppointments("C:\\Users\\Andres F\\Proyecto-Kodigo\\Grupo02_project\\Modules\\grupo02\\src\\main\\java\\grupo02\\Files\\appointments.txt");
+                    handleAppointments.readFile();
                     System.out.println(getAppointmentById(patient.getPatientCounter()));
                     System.out.println("See you");
                     response = 0;
@@ -98,8 +85,5 @@ public class UIPatient {
         Patient patient = new Patient(name,lastName,phone,email,id,age,weight,height,blood);
         showPatientMenu(patient);
     }
-
-
-
 
 }

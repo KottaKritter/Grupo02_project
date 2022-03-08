@@ -1,7 +1,6 @@
 package grupo02;
 
 import lombok.Data;
-
 import java.io.Serializable;
 
 @Data

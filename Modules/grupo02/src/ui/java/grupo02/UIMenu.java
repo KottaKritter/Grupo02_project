@@ -2,7 +2,10 @@ package grupo02;
 
 import java.util.Scanner;
 
+
+
 import static grupo02.UIDoctor.showDoctorMenu;
+
 
 public class UIMenu {
 
@@ -25,8 +28,6 @@ public class UIMenu {
                     System.out.println("Patient");
                     System.out.println("Accessing patients");
                     UIPatient.registerPatient();
-                    response = 0;
-
                     break;
                 case 2:
                     System.out.println("Doctor");

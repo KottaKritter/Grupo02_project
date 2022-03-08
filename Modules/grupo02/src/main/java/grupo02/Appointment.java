@@ -1,10 +1,8 @@
 package grupo02;
 
 import lombok.Data;
-
 import java.io.Serializable;
 import java.sql.Timestamp;
-
 
 @Data
 public class Appointment implements Serializable {
@@ -13,7 +11,6 @@ public class Appointment implements Serializable {
     private final Timestamp date;
     private Patient patient;
     private Doctor availableDoctor;
-
 
     public Appointment(Patient patient, Doctor availableDoctor) {
         id = ++Appointment.appointmentCounter;
