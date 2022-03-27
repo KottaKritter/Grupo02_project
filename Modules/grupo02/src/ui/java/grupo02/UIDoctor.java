@@ -11,15 +11,16 @@ public class UIDoctor {
 
 
     public static void showDoctorMenu() {
+
         HandleAppointments handleAppointments = new HandleAppointments();
         SpreadSheet spreadSheet = new SpreadSheet();
         System.out.println("Welcome doctor");
         System.out.println("This is the list of appointments that we have at the moment ");
-        if((readAppointments("C:\\Users\\Andres F\\Proyecto-Kodigo\\Grupo02_project\\Modules\\grupo02\\src\\main\\java\\grupo02\\Files\\appointments.txt") == null)){
+        if((readAppointments() == null)){
             System.out.println("No appointments scheduled yet");
             System.out.println("So you can take a break");
         }else{
-            handleAppointments.readFile();
+            System.out.println(readAppointments());
         }
 
         int response = 0;
@@ -44,11 +45,9 @@ public class UIDoctor {
                     System.out.println("returning to the main menu...");
                     showMenu();
                     break;
-                case 3:
-                    System.out.println("Bye....");
-                    break;
+
             }
-        } while (response == 3);
+        } while (response < 3);
 
     }
 }

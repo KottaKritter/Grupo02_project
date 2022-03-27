@@ -8,28 +8,19 @@ import java.util.ArrayList;
 @Data
 public class HandleAppointments implements Serializable, File {
 
-    public static ArrayList<Appointment> listAppointments = new ArrayList();
+    public static ArrayList<Appointment> listAppointments = new ArrayList<>();
 
     public HandleAppointments() {
 
     }
 
-    public static String bookAnAppointment(Appointment appointment) {
-        addAppointment(appointment);
+    public static String bookAnAppointment(Appointment appointment){
         return "your assigned doctor is: " + appointment.getAvailableDoctor().getName() + " " + appointment.getAvailableDoctor().getLastName() +
                 " in the date " + appointment.getDate().toString();
     }
 
-    public static ArrayList<Appointment> getAppointments() {
-        ArrayList<Appointment> appointments = readAppointments("C:\\Users\\Andres F\\Proyecto-Kodigo\\Grupo02_project\\Modules\\grupo02\\src\\main\\java\\grupo02\\Files\\appointments.txt");
-        for (int i = 0; i < appointments.size(); i++) {
-            listAppointments.add(appointments.get(i));
-        }
-        return appointments;
-    }
-
     public static Appointment getAppointmentById(int id) {
-        return listAppointments.get(id);
+        return listAppointments.get(id -1);
     }
 
     public static void addAppointment(Appointment appointment) {
@@ -59,12 +50,14 @@ public class HandleAppointments implements Serializable, File {
                 e.printStackTrace();
             }
         }
+
     }
 
     @Override
     public void readFile() {
         ArrayList<Appointment> appointments = null;
         String fileName = "C:\\Users\\Andres F\\Proyecto-Kodigo\\Grupo02_project\\Modules\\grupo02\\src\\main\\java\\grupo02\\Files\\appointments.txt";
+
         try {
             ObjectInputStream leerFichero = new ObjectInputStream(new FileInputStream(fileName));
             appointments = (ArrayList<Appointment>) leerFichero.readObject();
@@ -78,24 +71,23 @@ public class HandleAppointments implements Serializable, File {
             e.printStackTrace();
         }
         System.out.println(appointments);
-        ;
 
     }
 
-    public static ArrayList<Appointment> readAppointments(String fileName) {
+    public static ArrayList<Appointment> readAppointments() {
         ArrayList<Appointment> appointments = null;
+        String fileName = "C:\\Users\\Andres F\\Proyecto-Kodigo\\Grupo02_project\\Modules\\grupo02\\src\\main\\java\\grupo02\\Files\\appointments.txt";
         try {
             ObjectInputStream leerCitas = new ObjectInputStream(new FileInputStream(fileName));
             appointments = (ArrayList<Appointment>) leerCitas.readObject();
             leerCitas.close();
 
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            System.out.println("We did not find the file");
         } catch (IOException e) {
             System.out.println("the list is empty");
-            //e.printStackTrace();
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            System.out.println("We did not find the file");
         }
         return appointments;
     }

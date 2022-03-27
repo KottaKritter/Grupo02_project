@@ -12,6 +12,7 @@ public class Appointment implements Serializable {
     private Patient patient;
     private Doctor availableDoctor;
 
+
     public Appointment(Patient patient, Doctor availableDoctor) {
         id = ++Appointment.appointmentCounter;
         this.patient = patient;

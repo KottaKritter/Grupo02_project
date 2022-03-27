@@ -9,7 +9,7 @@ import java.util.Random;
 @Data
 public class SpreadSheet implements Serializable, File {
 
-    static ArrayList<Doctor> availableDoctors = new ArrayList();
+    public static ArrayList<Doctor> availableDoctors = new ArrayList();
 
     public static Doctor getADoctor() {
         Random numero = new Random();
@@ -20,7 +20,10 @@ public class SpreadSheet implements Serializable, File {
     public static ArrayList<Doctor> getDoctorsAvailable() {
         ArrayList<Doctor> doctors = readDoctor("C:\\Users\\Andres F\\Proyecto-Kodigo\\Grupo02_project\\Modules\\grupo02\\src\\main\\java\\grupo02\\Files\\doctors.txt");
         for (int i = 0; i < doctors.size(); i++) {
-            availableDoctors.add((Doctor) doctors.get(i));
+            availableDoctors.add(doctors.get(i));
+        }
+        if (doctors == null){
+            System.out.println("There aren´t doctors available right now");
         }
         return doctors;
     }
@@ -42,16 +45,11 @@ public class SpreadSheet implements Serializable, File {
         return doctors;
     }
 
-    @Override
-    public String toString() {
-        return availableDoctors.toString();
-
-    }
 
     @Override
     public void saveFile() {
         FileOutputStream fichero = null;
-        ArrayList<Doctor> doctors = getDoctorsAvailable();
+        ArrayList<Doctor> doctors = availableDoctors;
 
         try {
             fichero = new FileOutputStream("C:\\Users\\Andres F\\Proyecto-Kodigo\\Grupo02_project\\Modules\\grupo02\\src\\main\\java\\grupo02\\Files\\doctors.txt");
@@ -71,7 +69,7 @@ public class SpreadSheet implements Serializable, File {
     }
 
     @Override
-    public void readFile() {
+    public  void readFile() {
         ArrayList<Doctor> doctors = null;
         String fileName = "C:\\Users\\Andres F\\Proyecto-Kodigo\\Grupo02_project\\Modules\\grupo02\\src\\main\\java\\grupo02\\Files\\doctors.txt";
         try {
@@ -87,7 +85,12 @@ public class SpreadSheet implements Serializable, File {
             e.printStackTrace();
         }
         System.out.println(doctors);
-        ;
+
+
+    }
+    @Override
+    public String toString() {
+        return availableDoctors.toString();
 
     }
 }
