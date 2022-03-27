@@ -1,10 +1,14 @@
-package grupo02;
+package ui;
+
+import grupo02.Appointment;
+import grupo02.HandleAppointments;
+import grupo02.Patient;
+import grupo02.ValidatePerson;
 
 import java.util.Scanner;
 
 import static grupo02.HandleAppointments.*;
 import static grupo02.SpreadSheet.*;
-import static grupo02.UIMenu.*;
 
 public class UIPatient {
 
@@ -49,7 +53,7 @@ public class UIPatient {
                     break;
                 case 0:
                     System.out.println("I return you to the main menu");
-                    showMenu();
+                    UIMenu.showMenu();
                     response = 0;
                     break;
             }

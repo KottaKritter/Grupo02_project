@@ -1,5 +1,5 @@
 
-import static grupo02.UIMenu.showMenu;
+import static ui.UIMenu.showMenu;
 
 
 public class Main {

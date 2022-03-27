@@ -1,11 +1,14 @@
-package grupo02;
+package ui;
 
+
+import grupo02.HandleAppointments;
+import grupo02.SpreadSheet;
 
 import java.util.Scanner;
 
 
 import static grupo02.HandleAppointments.readAppointments;
-import static grupo02.UIMenu.showMenu;
+import static ui.UIMenu.showMenu;
 
 public class UIDoctor {
 
