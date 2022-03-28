@@ -17,10 +17,16 @@ public class Appointment implements Serializable {
         id = ++Appointment.appointmentCounter;
         this.patient = patient;
         this.availableDoctor = availableDoctor;
-        long rangeBegin = Timestamp.valueOf("2022-03-08 00:00:00").getTime();
-        long rangeEnd = Timestamp.valueOf("2022-04-08 00:58:00").getTime();
+        this.date = getRandomDate();
+
+    }
+
+    public Timestamp getRandomDate(){
+        long rangeBegin = Timestamp.valueOf("2022-03-28 00:00:00").getTime();
+        long rangeEnd = Timestamp.valueOf("2022-04-30 00:58:00").getTime();
         long diff = rangeEnd - rangeBegin + 1;
-        this.date = new Timestamp(rangeBegin + (long) (Math.random() * diff));
+        Timestamp date = new Timestamp(rangeBegin + (long) (Math.random() * diff));
+        return date;
     }
 
     @Override

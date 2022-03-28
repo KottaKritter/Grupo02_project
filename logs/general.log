@@ -12,3 +12,24 @@ java.lang.NumberFormatException: For input string: "ert"
 	at ui.UIMenu.showMenu(UIMenu.java:26)
 	at Main.main(Main.java:7)
 [2022-03-27 21:15:41] [ WARN ] [ValidatePerson:40] letters were found in the entered data
+[2022-03-28 07:48:56] [ WARN ] [ValidatePerson:15] the received name is null or empty
+[2022-03-28 07:49:08] [ WARN ] [ValidatePerson:64] the received id is null
+java.lang.NumberFormatException: For input string: "gjht"
+	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:67)
+	at java.base/java.lang.Integer.parseInt(Integer.java:668)
+	at java.base/java.lang.Integer.parseInt(Integer.java:786)
+	at grupo02.ValidatePerson.validateId(ValidatePerson.java:61)
+	at ui.UIPatient.registerPatient(UIPatient.java:83)
+	at ui.UIMenu.showMenu(UIMenu.java:26)
+	at Main.main(Main.java:7)
+[2022-03-28 07:49:16] [ WARN ] [ValidatePerson:40] letters were found in the entered data
+[2022-03-28 07:49:28] [ WARN ] [ValidatePerson:51] the received email is null
+[2022-03-28 07:49:49] [ WARN ] [ValidatePerson:84] the received weight is null
+java.lang.NumberFormatException: For input string: "rh32"
+	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:67)
+	at java.base/java.lang.Integer.parseInt(Integer.java:668)
+	at java.base/java.lang.Integer.parseInt(Integer.java:786)
+	at grupo02.ValidatePerson.validateWeight(ValidatePerson.java:81)
+	at ui.UIPatient.registerPatient(UIPatient.java:111)
+	at ui.UIMenu.showMenu(UIMenu.java:26)
+	at Main.main(Main.java:7)
