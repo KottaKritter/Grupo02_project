@@ -1,10 +1,6 @@
-package grupo02;
+package ui;
 
 import java.util.Scanner;
-
-
-
-import static grupo02.UIDoctor.showDoctorMenu;
 
 
 public class UIMenu {
@@ -32,7 +28,7 @@ public class UIMenu {
                 case 2:
                     System.out.println("Doctor");
                     System.out.println("Accessing the database of doctors");
-                    showDoctorMenu();
+                    UIDoctor.showDoctorMenu();
                     break;
                 case 0:
                     System.out.println("Thank you for you visit");

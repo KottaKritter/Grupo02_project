@@ -1,12 +1,11 @@
-package grupo02;
 
-import static grupo02.UIMenu.showMenu;
+import static ui.UIMenu.showMenu;
+
 
 public class Main {
     public static void main(String[] args) {
         showMenu();
     }
-
 }
 
 

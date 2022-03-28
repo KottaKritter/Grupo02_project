@@ -1,10 +1,14 @@
-package grupo02;
+package ui;
+
+import grupo02.Appointment;
+import grupo02.HandleAppointments;
+import grupo02.Patient;
+import grupo02.ValidatePerson;
 
 import java.util.Scanner;
 
 import static grupo02.HandleAppointments.*;
 import static grupo02.SpreadSheet.*;
-import static grupo02.UIMenu.*;
 
 public class UIPatient {
 
@@ -23,6 +27,7 @@ public class UIPatient {
             response = Integer.valueOf(sc.nextLine());
 
             switch (response) {
+
                 case 1:
                     System.out.println("::Booking an appointment::");
                     getDoctorsAvailable();
@@ -34,7 +39,7 @@ public class UIPatient {
                     showPatientMenu(patient);
                     break;
                 case 2:
-                    if (readAppointments("C:\\Users\\Andres F\\Proyecto-Kodigo\\Grupo02_project\\Modules\\grupo02\\src\\main\\java\\grupo02\\Files\\appointments.txt").isEmpty()){
+                    if (readAppointments().isEmpty()){
                         System.out.println("There are no scheduled appointments");
                         System.out.println("I'm going to return you to the previous menu so you can schedule one.");
                         showPatientMenu(patient);
@@ -42,14 +47,13 @@ public class UIPatient {
                         break;
                     }
                     System.out.println("This is your scheduled appointment: ");
-                    handleAppointments.readFile();
                     System.out.println(getAppointmentById(patient.getPatientCounter()));
                     System.out.println("See you");
                     response = 0;
                     break;
                 case 0:
                     System.out.println("I return you to the main menu");
-                    showMenu();
+                    UIMenu.showMenu();
                     response = 0;
                     break;
             }
@@ -57,29 +61,65 @@ public class UIPatient {
     }
 
     public static void registerPatient(){
+        ValidatePerson validatePerson = new ValidatePerson();
         Scanner sc = new Scanner(System.in);
         System.out.println("The first thing you need to do is to register here:");
         System.out.println("Tell me your name: ");
         String name = sc.nextLine();
+        while(validatePerson.validateName(name) == false){
+            System.out.println("Name Cannot be null or empty");
+            System.out.println("Tell me your name: ");
+            name = sc.nextLine();
+        }
         System.out.println(("Tell me your lastname: "));
         String lastName = sc.nextLine();
+        while(validatePerson.validateLastName(lastName) == false){
+            System.out.println("Last name Cannot be null or empty");
+            System.out.println(("Tell me your lastname: "));
+            lastName = sc.nextLine();
+        }
         System.out.println("What is you id number?: ");
-        long id = sc.nextLong();
-        sc.nextLine();
+        String id = sc.nextLine();
+        while(validatePerson.validateId(id) == false){
+            System.out.println("Id Cannot be null or empty and should contain only digits");
+            System.out.println("What is your Id number?: ");
+            id = sc.nextLine();
+        }
         System.out.println("What is your thelephone number?: ");
-        long phone = sc.nextLong();
-        sc.nextLine();
+        String phone = sc.nextLine();
+        while(validatePerson.validatePhoneNumber(phone) == false){
+            System.out.println("Phone Cannot be null or empty and should contain only digits");
+            System.out.println("What is your thelephone number?: ");
+            phone = sc.nextLine();
+        }
         System.out.println("write your email: ");
         String email = sc.nextLine();
+        while(validatePerson.validateEmail(email) == false){
+            System.out.println("El email ingresado es inválido.");
+            System.out.println("write your email: ");
+            email = sc.nextLine();
+        }
         System.out.println("write your age: ");
-        int age = sc.nextInt();
-        sc.nextLine();
+        String age = sc.nextLine();
+        while(validatePerson.validateAge(age) == false){
+            System.out.println("The age should contain only digits");
+            System.out.println("write your age: ");
+            age = sc.nextLine();
+        }
         System.out.println("Write you weight: ");
-        double weight = sc.nextDouble();
-        sc.nextLine();
+        String weight = sc.nextLine();
+        while(validatePerson.validateWeight(weight) == false){
+            System.out.println("The weight should contain only digits");
+            System.out.println("write your weight: ");
+            weight = sc.nextLine();
+        }
         System.out.println("Write your height: ");
-        double height = sc.nextDouble();
-        sc.nextLine();
+        String height = sc.nextLine();
+        while(validatePerson.validateHeight(height) == false){
+            System.out.println("The height should contain only digits");
+            System.out.println("write your height: ");
+            height = sc.nextLine();
+        }
         System.out.println("Write your blood type: ");
         String blood = sc.nextLine();
         Patient patient = new Patient(name,lastName,phone,email,id,age,weight,height,blood);

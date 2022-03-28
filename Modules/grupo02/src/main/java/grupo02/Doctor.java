@@ -7,7 +7,7 @@ import java.io.Serializable;
 public class Doctor extends Person implements Serializable {
     private String specialty;
 
-    public Doctor(String name, String lastName, long phone, String email, String specialty){
+    public Doctor(String name, String lastName, String phone, String email, String specialty){
         super(name, lastName, phone, email);
         this.specialty = specialty;
     }

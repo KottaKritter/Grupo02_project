@@ -1,6 +1,7 @@
 package grupo02;
 
 import lombok.Data;
+import org.apache.log4j.Logger;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -8,28 +9,20 @@ import java.util.ArrayList;
 @Data
 public class HandleAppointments implements Serializable, File {
 
-    public static ArrayList<Appointment> listAppointments = new ArrayList();
+    public static ArrayList<Appointment> listAppointments = new ArrayList<>();
+    private static Logger logger = Logger.getLogger(ValidatePerson.class);
 
     public HandleAppointments() {
 
     }
 
-    public static String bookAnAppointment(Appointment appointment) {
-        addAppointment(appointment);
+    public static String bookAnAppointment(Appointment appointment){
         return "your assigned doctor is: " + appointment.getAvailableDoctor().getName() + " " + appointment.getAvailableDoctor().getLastName() +
                 " in the date " + appointment.getDate().toString();
     }
 
-    public static ArrayList<Appointment> getAppointments() {
-        ArrayList<Appointment> appointments = readAppointments("C:\\Users\\Andres F\\Proyecto-Kodigo\\Grupo02_project\\Modules\\grupo02\\src\\main\\java\\grupo02\\Files\\appointments.txt");
-        for (int i = 0; i < appointments.size(); i++) {
-            listAppointments.add(appointments.get(i));
-        }
-        return appointments;
-    }
-
     public static Appointment getAppointmentById(int id) {
-        return listAppointments.get(id);
+        return listAppointments.get(id -1);
     }
 
     public static void addAppointment(Appointment appointment) {
@@ -49,53 +42,63 @@ public class HandleAppointments implements Serializable, File {
             ObjectOutputStream tuberia = new ObjectOutputStream(fichero);
             tuberia.writeObject(appointments);
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            logger.error("file path not found", e);
+            System.out.println("the file was not found");
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error("file path not found", e);
+            System.out.println("the file was not found");
         } finally {
             try {
                 fichero.close();
             } catch (IOException e) {
-                e.printStackTrace();
+                logger.error("the file could not be closed", e);
+                System.out.println("the file was not found");
             }
         }
+
     }
 
     @Override
     public void readFile() {
         ArrayList<Appointment> appointments = null;
         String fileName = "C:\\Users\\Andres F\\Proyecto-Kodigo\\Grupo02_project\\Modules\\grupo02\\src\\main\\java\\grupo02\\Files\\appointments.txt";
+
         try {
             ObjectInputStream leerFichero = new ObjectInputStream(new FileInputStream(fileName));
             appointments = (ArrayList<Appointment>) leerFichero.readObject();
             leerFichero.close();
 
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            logger.error("file path not found", e);
+            System.out.println("the file was not found");
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error("file path not found", e);
+            System.out.println("the file was not found");
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            logger.error("file path not found", e);
+            System.out.println("the file was not found");
         }
         System.out.println(appointments);
-        ;
 
     }
 
-    public static ArrayList<Appointment> readAppointments(String fileName) {
+    public static ArrayList<Appointment> readAppointments() {
         ArrayList<Appointment> appointments = null;
+        String fileName = "C:\\Users\\Andres F\\Proyecto-Kodigo\\Grupo02_project\\Modules\\grupo02\\src\\main\\java\\grupo02\\Files\\appointments.txt";
         try {
             ObjectInputStream leerCitas = new ObjectInputStream(new FileInputStream(fileName));
             appointments = (ArrayList<Appointment>) leerCitas.readObject();
             leerCitas.close();
 
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            logger.error("file path not found", e);
+            System.out.println("the file was not found");
         } catch (IOException e) {
-            System.out.println("the list is empty");
-            //e.printStackTrace();
+            logger.error("file path not found", e);
+            System.out.println("the file was not found");
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            logger.error("file path not found", e);
+            System.out.println("the file was not found");
         }
         return appointments;
     }
