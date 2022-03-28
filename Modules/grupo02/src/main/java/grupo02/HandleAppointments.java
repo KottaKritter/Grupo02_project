@@ -1,6 +1,7 @@
 package grupo02;
 
 import lombok.Data;
+import org.apache.log4j.Logger;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -9,6 +10,7 @@ import java.util.ArrayList;
 public class HandleAppointments implements Serializable, File {
 
     public static ArrayList<Appointment> listAppointments = new ArrayList<>();
+    private static Logger logger = Logger.getLogger(ValidatePerson.class);
 
     public HandleAppointments() {
 
@@ -40,14 +42,17 @@ public class HandleAppointments implements Serializable, File {
             ObjectOutputStream tuberia = new ObjectOutputStream(fichero);
             tuberia.writeObject(appointments);
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            logger.error("file path not found", e);
+            System.out.println("the file was not found");
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error("file path not found", e);
+            System.out.println("the file was not found");
         } finally {
             try {
                 fichero.close();
             } catch (IOException e) {
-                e.printStackTrace();
+                logger.error("the file could not be closed", e);
+                System.out.println("the file was not found");
             }
         }
 
@@ -64,11 +69,14 @@ public class HandleAppointments implements Serializable, File {
             leerFichero.close();
 
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            logger.error("file path not found", e);
+            System.out.println("the file was not found");
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error("file path not found", e);
+            System.out.println("the file was not found");
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            logger.error("file path not found", e);
+            System.out.println("the file was not found");
         }
         System.out.println(appointments);
 
@@ -83,11 +91,14 @@ public class HandleAppointments implements Serializable, File {
             leerCitas.close();
 
         } catch (FileNotFoundException e) {
-            System.out.println("We did not find the file");
+            logger.error("file path not found", e);
+            System.out.println("the file was not found");
         } catch (IOException e) {
-            System.out.println("the list is empty");
+            logger.error("file path not found", e);
+            System.out.println("the file was not found");
         } catch (ClassNotFoundException e) {
-            System.out.println("We did not find the file");
+            logger.error("file path not found", e);
+            System.out.println("the file was not found");
         }
         return appointments;
     }

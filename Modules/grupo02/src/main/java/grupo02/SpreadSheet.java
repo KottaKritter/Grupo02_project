@@ -1,6 +1,7 @@
 package grupo02;
 
 import lombok.Data;
+import org.apache.log4j.Logger;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -10,6 +11,7 @@ import java.util.Random;
 public class SpreadSheet implements Serializable, File {
 
     public static ArrayList<Doctor> availableDoctors = new ArrayList();
+    private static Logger logger = Logger.getLogger(ValidatePerson.class);
 
     public static Doctor getADoctor() {
         Random numero = new Random();
@@ -36,11 +38,14 @@ public class SpreadSheet implements Serializable, File {
             leerFichero.close();
 
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            logger.error("file path not found", e);
+            System.out.println("the file was not found");
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error("file path not found", e);
+            System.out.println("the file was not found");
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            logger.error("file path not found", e);
+            System.out.println("the file was not found");
         }
         return doctors;
     }
@@ -56,14 +61,17 @@ public class SpreadSheet implements Serializable, File {
             ObjectOutputStream tuberia = new ObjectOutputStream(fichero);
             tuberia.writeObject(doctors);
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            logger.error("file path not found", e);
+            System.out.println("the file was not found");
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error("file path not found", e);
+            System.out.println("the file was not found");
         } finally {
             try {
                 fichero.close();
             } catch (IOException e) {
-                e.printStackTrace();
+                logger.error("file path not found", e);
+                System.out.println("the file was not found");
             }
         }
     }
@@ -78,11 +86,14 @@ public class SpreadSheet implements Serializable, File {
             leerFichero.close();
 
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            logger.error("file path not found", e);
+            System.out.println("the file was not found");
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error("file path not found", e);
+            System.out.println("the file was not found");
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            logger.error("file path not found", e);
+            System.out.println("the file was not found");
         }
         System.out.println(doctors);
 
